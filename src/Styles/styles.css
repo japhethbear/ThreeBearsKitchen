@@ -1,0 +1,117 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --eggshell: #f4f1deff;
+    --burnt-sienna: #e07a5fff;
+    --delft-blue: #3d405bff;
+  }
+  
+  /* Apply a background color and font styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--eggshell); /* Light gray background color */
+    color: black; /* Dark text color */
+  }
+  
+  /* Style the header section */
+  .header {
+    background-color: var(--burnt-sienna); /* Reddish-pink header background color */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .header p {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Style the hero section */
+  .hero {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .hero-image {
+    flex: 1;
+    /* Add styles for your hero image, e.g., max-width, border-radius, etc. */
+  }
+  
+  .hero-text {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  /* Style the features section */
+  .features {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+  
+  .feature {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .feature h3 {
+    font-size: 1.2rem;
+  }
+  
+  .feature p {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Style the CTA section */
+  .cta {
+    background-color: var(--delft-blue); /* Teal CTA background color */
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+  
+  .cta p {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #fff; /* White CTA button background color */
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  
+  .cta-button:hover {
+    background-color: #444; /* Dark gray on hover */
+    color: #fff;
+  }
+  
