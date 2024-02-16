@@ -30,50 +30,26 @@ namespace ThreeBearsKitchen.Pages.Recipes
                 return NotFound();
             }
 
-            var existingRecipe =  await _context.Recipes
-                .Include(r => r.Ingredients)
-                .Include(r => r.Instructions)
+            var recipe =  await _context.Recipes
                 .FirstOrDefaultAsync(m => m.RecipeId == id);
 
-            if (existingRecipe == null)
+            if (recipe == null)
             {
                 return NotFound();
             }
-            Recipe = existingRecipe;
+            Recipe = recipe;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(int? id)
+
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var existingRecipe = await _context.Recipes
-                .Include(r => r.Ingredients)
-                .Include(r => r.Instructions)
-                .FirstOrDefaultAsync(m => m.RecipeId == id);
-
-            if (existingRecipe == null)
-            {
-                return NotFound();
-            }
-
-            existingRecipe.RecipeName = Recipe.RecipeName;
-            existingRecipe.RecipeMeal = Recipe.RecipeMeal;
-
-            existingRecipe.Ingredients = Recipe.Ingredients;
-            existingRecipe.Instructions = Recipe.Instructions;
-
-            _context.Update(existingRecipe);
+            _context.Attach(Recipe).State = EntityState.Modified;
 
             try
             {
@@ -81,7 +57,7 @@ namespace ThreeBearsKitchen.Pages.Recipes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(id.Value))
+                if (!RecipeExists(Recipe.RecipeId))
                 {
                     return NotFound();
                 }

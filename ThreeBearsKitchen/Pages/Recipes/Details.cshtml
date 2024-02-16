@@ -1,4 +1,4 @@
-@page
+@page "{id:min(1)}"
 @model ThreeBearsKitchen.Pages.Recipes.DetailsModel
 
 @{
@@ -31,10 +31,16 @@
             @Html.DisplayFor(model => model.Recipe.RecipeMeal)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Recipe.UserId)
+            @Html.DisplayNameFor(model => model.Recipe.Ingredients)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Recipe.UserId)
+            @Html.DisplayFor(model => model.Recipe.Ingredients)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Recipe.Instructions)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recipe.Instructions)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Recipe.CreatedAt)

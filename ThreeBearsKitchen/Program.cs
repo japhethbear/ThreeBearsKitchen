@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ThreeBearsKitchen.Data;
+using ThreeBearsKitchen.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

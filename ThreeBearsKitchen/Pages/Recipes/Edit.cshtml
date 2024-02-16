@@ -1,4 +1,4 @@
-@page ""
+@page "{id:min(1)}"
 @model ThreeBearsKitchen.Pages.Recipes.EditModel
 
 @{
@@ -15,6 +15,13 @@
 <body>
 
     <h4>Recipe</h4>
+    <h2>Recipe Details:</h2>
+    <ul>
+        @foreach (var property in Model.Recipe.GetType().GetProperties())
+        {
+            <li>@property.Name: @property.GetValue(Model.Recipe)</li>
+        }
+    </ul>
     <hr />
     <div class="row">
         <div class="col-md-4">
@@ -32,32 +39,16 @@
                     <span asp-validation-for="Recipe.RecipeMeal" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Recipe.Ingredients" class="control-label">Ingredients</label>
-                    @{
-                        var ingredientList = Model.Recipe.Ingredients.ToList();
-                    }
-                    @for (int i = 0; i < ingredientList.Count; i++)
-                    {
-                        <div>
-                            <input type="text" asp-for="@ingredientList[i].IngredientName" class="form-control" />
-                            <input type="text" asp-for="@ingredientList[i].IngredientAmount" class="form-control" />
-                            <input type="hidden" asp-for="@ingredientList[i].IngredientID" />
-                        </div>
-                    }
+                    <label asp-for="Recipe.Ingredients" class="control-label"></label>
+                    <input asp-for="Recipe.Ingredients" class="form-control" />
+                    <span asp-validation-for="Recipe.Ingredients" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Recipe.Instructions" class="control-label">Instructions</label>
-                    @if (Model.Recipe.Instructions != null)
-                    {
-                        @for (int i = 0; i < Model.Recipe.Instructions.Count; i++)
-                        {
-                            <div>
-                                <input type="text" asp-for="@Model.Recipe.Instructions[i].Description" class="form-control" />
-                                <input type="hidden" asp-for="@Model.Recipe.Instructions[i].InstructionID" />
-                            </div>
-                        }
-                    }
+                    <label asp-for="Recipe.Instructions" class="control-label"></label>
+                    <input asp-for="Recipe.Instructions" class="form-control" />
+                    <span asp-validation-for="Recipe.Instructions" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />
                 </div>

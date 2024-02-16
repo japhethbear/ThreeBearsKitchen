@@ -16,8 +16,6 @@ namespace ThreeBearsKitchen.Data
         }
 
         public DbSet<ThreeBearsKitchen.Models.Recipe> Recipes { get; set; } = default!;
-        public DbSet<Ingredient> Ingredients { get; set; } = default!;
-        public DbSet<Instruction> Instructions { get; set; } = default!;
 
     }
 }

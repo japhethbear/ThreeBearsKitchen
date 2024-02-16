@@ -18,56 +18,17 @@ namespace ThreeBearsKitchen.Models
         [MinLength(2, ErrorMessage = "Name must be at least 2 characters long")]
         public string RecipeName { get; set; }
 
-        [Required(ErrorMessage = "Meal is required")]
+        [Required(ErrorMessage = "Recipe meal is required")]
         public string RecipeMeal { get; set; }
 
-        public ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+        [Required(ErrorMessage = "At least one ingredient is required")]
+        public string Ingredients { get; set; }
 
-        public List<Instruction> Instructions { get; set; }
+        [Required(ErrorMessage = "At least one instruction is required")]
+        public string Instructions { get; set; }
 
-        // **** REMOVE THE EMPTY STRING EXCEPTION WHEN USERS ARE CREATED
-        [Required(AllowEmptyStrings = true, ErrorMessage = "No User Associated With This Recipe.")]
-        public string UserId { get; set; } // Reference to the user who created the recipe
-
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
-    }
-
-    public class Ingredient
-
-    {
-        // Properties
-
-        [Key]
-        public int IngredientID { get; set; }
-
-        [Required(ErrorMessage = "Name is required")]
-        [MinLength(2, ErrorMessage = "Name must be at least 2 characters long")]
-        public string IngredientName { get; set; }
-
-        [Required(ErrorMessage = "Amount is required")]
-        [MinLength(2, ErrorMessage = "Amount must be at least 2 characters long")]
-        public string IngredientAmount { get; set; }
-
-        public int RecipeID { get; set; }
-        public Recipe? Recipe { get; set; }
-
-    }
-
-    public class Instruction
-    {
-        // Properties
-
-        [Key]
-        public int InstructionID { get; set; }
-
-        [Required(ErrorMessage = "Description required")]
-        [MinLength(2, ErrorMessage = "Description must be at least 2 characters long")]
-        public string Description { get; set; }
-
-        public int RecipeID { get; set; }
-        public Recipe? Recipe { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
     }
 
